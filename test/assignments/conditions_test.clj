@@ -19,3 +19,10 @@
     (is (= 4 (harishchandra 4))))
   (testing "falsy value"
     (is (nil? (harishchandra false)))))
+
+(deftest yudishtira-test
+  (testing "truthy value"
+    (is (= 4 (yudishtira 4))))
+  (testing "falsey value"
+    (is (= :ashwathama (yudishtira nil)))
+    (is (= :ashwathama (yudishtira false)))))
