@@ -32,3 +32,13 @@
     (is (= '(1 1 2 3) (duplicate-first [1 2 3]))))
   (testing "returns nil for empty sequence"
     (is (nil? (duplicate-first [])))))
+
+(deftest five-point-someone-test
+  (testing "returns :chetan-bhagat for y = 5"
+    (is (= :chetan-bhagat (five-point-someone 2 5))))
+  (testing "returns :satan-bhagat for x = 5"
+    (is (= :satan-bhagat (five-point-someone 5 4))))
+  (testing "returns :greece when x > y"
+    (is (= :greece (five-point-someone 7 6))))
+  (testing "returns :universe when anything else happens"
+    (is (= :universe (five-point-someone 6 7)))))
