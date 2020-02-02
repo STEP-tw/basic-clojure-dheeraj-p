@@ -42,3 +42,23 @@
     (is (= :greece (five-point-someone 7 6))))
   (testing "returns :universe when anything else happens"
     (is (= :universe (five-point-someone 6 7)))))
+
+(deftest conditions-apply-test
+  (testing "1 3 are in order"
+    (is (= :wonder-woman (conditions-apply [1 2 3]))))
+  (testing "1 3 are not in order"
+    (is (= :tuntun (conditions-apply [3 1 2]))))
+  (testing "1 3 occurs more than one time"
+    (is (= :tuntun (conditions-apply [1 1 3]))))
+  (testing ":a :b :c are in order"
+    (is (= :durga (conditions-apply [:a :b :c :d]))))
+  (testing ":a :b :c are not in order"
+    (is (= :tuntun (conditions-apply [:a :c :b]))))
+  (testing ":a :b :c occurs more than one time"
+    (is (= :tuntun (conditions-apply [:a :a :b :c]))))
+  (testing "[2 3] [4 5] are in order"
+    (is (= :cleopatra (conditions-apply [[2 3] [4 5]]))))
+  (testing "[2 3] [4 5] are not in order"
+    (is (= :tuntun (conditions-apply [[4 5] [2 3]]))))
+  (testing "[2 3] [4 5] occurs more than one time"
+    (is (= :tuntun (conditions-apply [[2 3] [2 3] [4 5]])))))
