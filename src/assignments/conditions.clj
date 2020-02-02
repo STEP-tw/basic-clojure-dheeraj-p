@@ -30,7 +30,7 @@
   Falsy values(false and nil) return :ashwathama"
   {:level        :easy
    :use          '[if-let]
-   :implemented? false}
+   :implemented? true}
   [x]
   (if-let [value x] value :ashwathama))
 
@@ -40,8 +40,9 @@
   {:level        :easy
    :use          '[when-first concat]
    :alternates   '[empty? seq? conj into]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (when-first [first-val coll] (into (seq coll) [first-val])))
 
 (defn five-point-someone
   "Returns :chetan-bhagat if y is 5.

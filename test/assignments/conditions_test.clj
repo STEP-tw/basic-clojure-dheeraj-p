@@ -26,3 +26,9 @@
   (testing "falsey value"
     (is (= :ashwathama (yudishtira nil)))
     (is (= :ashwathama (yudishtira false)))))
+
+(deftest duplicate-first-test
+  (testing "duplicates first element of non-empty sequence"
+    (is (= '(1 1 2 3) (duplicate-first [1 2 3]))))
+  (testing "returns nil for empty sequence"
+    (is (nil? (duplicate-first [])))))
