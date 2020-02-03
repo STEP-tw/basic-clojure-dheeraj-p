@@ -94,3 +94,9 @@
     (is (= :empty (zero-aliases `()))))
   (testing "not-zero"
     (is (= :not-zero (zero-aliases [1 2 4])))))
+
+(deftest zero-separated-palindrome-test
+  (testing "non-empty collection"
+    (is (= `(4 3 2 0 2 3 4) (zero-separated-palindrome [1 2 3]))))
+  (testing "empty collection"
+    (is (= `(0) (zero-separated-palindrome [])))))
