@@ -78,3 +78,19 @@
     (is (= [:x-greater-than-y :z-greater-than-x] (order-in-words 4 3 5))))
   (testing "z>x"
     (is (= [:z-greater-than-x] (order-in-words 2 3 4)))))
+
+(deftest zero-aliases-test
+  (testing "0, :zero"
+    (is (= :zero (zero-aliases 0))))
+  (testing "[], :empty"
+    (is (= :empty (zero-aliases []))))
+  (testing "#{}, :empty-set"
+    (is (= :empty-set (zero-aliases #{}))))
+  (testing "{}, :empty-map"
+    (is (= :empty-map (zero-aliases {}))))
+  (testing "\"\", :empty-string"
+    (is (= :empty-string (zero-aliases ""))))
+  (testing "`(), :empty"
+    (is (= :empty (zero-aliases `()))))
+  (testing "not-zero"
+    (is (= :not-zero (zero-aliases [1 2 4])))))
