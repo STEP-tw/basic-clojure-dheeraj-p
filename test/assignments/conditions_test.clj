@@ -70,3 +70,11 @@
     (is (= [0 1 2 0 1 2] (doall (repeat-and-truncate (range 3) true false 4)))))
   (testing "repeat and truncate true"
     (is (= [0 1 2 3 0 1] (doall (repeat-and-truncate (range 4) true true 6))))))
+
+(deftest order-in-words-test
+  (testing "x>y>z"
+    (is (= [:x-greater-than-y :y-greater-than-z] (order-in-words 4 3 2))))
+  (testing "z>x>y"
+    (is (= [:x-greater-than-y :z-greater-than-x] (order-in-words 4 3 5))))
+  (testing "z>x"
+    (is (= [:z-greater-than-x] (order-in-words 2 3 4)))))
