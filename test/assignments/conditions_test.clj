@@ -62,3 +62,11 @@
     (is (= :tuntun (conditions-apply [[4 5] [2 3]]))))
   (testing "[2 3] [4 5] occurs more than one time"
     (is (= :tuntun (conditions-apply [[2 3] [2 3] [4 5]])))))
+
+(deftest repeat-and-truncate-test
+  (testing "truncate true"
+    (is (= [0 1 2] (doall (repeat-and-truncate (range 4) false true 3)))))
+  (testing "repeat true"
+    (is (= [0 1 2 0 1 2] (doall (repeat-and-truncate (range 3) true false 4)))))
+  (testing "repeat and truncate true"
+    (is (= [0 1 2 3 0 1] (doall (repeat-and-truncate (range 4) true true 6))))))
