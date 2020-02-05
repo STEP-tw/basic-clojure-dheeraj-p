@@ -28,3 +28,9 @@
     (is (= 2 (count' {:one 1 :two 2}))))
   (testing "string"
     (is (= 6 (count' "abcdef")))))
+
+(deftest reverse-test
+  (testing "seqable collection"
+    (is (= [5 4 3 2 1] (reverse' [1 2 3 4 5]))))
+  (testing "non-seqable collection"
+    (is (nil? (reverse' 1)))))
