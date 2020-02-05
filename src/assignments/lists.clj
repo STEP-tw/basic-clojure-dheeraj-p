@@ -143,7 +143,7 @@
   {:level        :medium
    :use          '[map + rest]
    :dont-use     '[loop recur partition]
-   :implemented? false}
+   :implemented? true}
   [coll]
   (map + coll (rest coll)))
 
@@ -155,19 +155,25 @@
   {:level        :medium
    :use          '[map next nnext max-key partial apply + if ->>]
    :dont-use     '[loop recur partition]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (if (> 3 (count coll))
+    coll
+    (->> [coll (next coll) (nnext coll)]
+         (apply map vector)
+         (apply max-key (partial apply +)))))
 
 ;; transpose is a def. Not a defn.
 (def
   ^{:level        :easy
     :dont-use     '[loop recur for nth get]
-    :implemented? false}
+    :implemented? true}
   transpose
   "Transposes a given matrix.
   [[a b] [c d]] => [[a c] [b d]].
   Note this is a def. Not a defn.
-  Return a vector of vectors, not list of vectors or vectors of lists")
+  Return a vector of vectors, not list of vectors or vectors of lists"
+  (partial apply map vector))
 
 (defn difference
   "Given two collections, returns only the elements that are present
@@ -175,8 +181,9 @@
   {:level        :easy
    :use          '[remove set]
    :dont-use     '[loop recur if]
-   :implemented? false}
-  [coll1 coll2])
+   :implemented? true}
+  [coll1 coll2]
+  (remove (set coll1) coll2))
 
 (defn union
   "Given two collections, returns a new collection with elements from the second
@@ -185,8 +192,9 @@
   if elements repeat."
   {:level        :easy
    :use          '[remove into set ->>]
-   :implemented? false}
-  [coll1 coll2])
+   :implemented? true}
+  [coll1 coll2]
+  (concat coll1 (difference coll1 coll2)))
 
 ;; points-around-origin is a def not a defn
 (def

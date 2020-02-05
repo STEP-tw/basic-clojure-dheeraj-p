@@ -56,3 +56,25 @@
 (deftest sum-of-adjacent-digits-test
   (testing "non-empty collection"
     (is (= [3 5 7] (sum-of-adjacent-digits [1 2 3 4])))))
+
+(deftest difference-test
+  (testing "non-empty collection"
+    (is (= [5 6 7 8] (difference [1 2 3 4] [5 6 1 2 7 8])))))
+
+(deftest transpose-test
+  (testing "non-empty collection"
+    (is (= [[\a \d] [\b \e] [\c \f]] (transpose [[\a \b \c] [\d \e \f]])))))
+
+(deftest max-three-digit-sequence-test
+  (testing "with less than three numbers"
+    (is (= [1 2] (max-three-digit-sequence [1 2]))))
+  (testing "with more than three numbers"
+    (is (= [2 -1 2] (max-three-digit-sequence [1 2 -1 2 0])))))
+
+(deftest union-test
+  (testing "with no common elements"
+    (is (= [1 2 3 4 5 6] (union [1 2 3] [ 4 5 6]))))
+  (testing "with common elements but elements doesn't repeat"
+    (is (= [1 2 3 4 5] (union [1 2 3] [3 4 5]))))
+  (testing "with common element and elements repeat"
+    (is (= [1 2 3 1 4 5 6 4] (union [1 2 3 1] [4 5 6 3 2 4])))))
