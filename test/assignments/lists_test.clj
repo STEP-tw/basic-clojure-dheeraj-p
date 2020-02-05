@@ -96,3 +96,18 @@
              [1 -1]
              [1 0]
              [1 1]) points-around-origin))))
+
+(deftest double-up-test
+  (testing "with empty sequence"
+    (is (= [] (double-up []))))
+  (testing "with integer sequence"
+    (is (= [1 1 2 2 3 3] (double-up [1 2 3]))))
+  (testing "with string sequence"
+    (is (= ["I" "I" "love" "love" "clojure" "clojure"]
+           (double-up ["I" "love" "clojure"])))))
+
+(deftest sqr-of-the-first-test
+  (testing "with single item"
+    (is (= [1] (sqr-of-the-first [1]))))
+  (testing "with collection containing 4 items"
+    (is (= [4 4 4 4] (sqr-of-the-first [2 3 4 5])))))
