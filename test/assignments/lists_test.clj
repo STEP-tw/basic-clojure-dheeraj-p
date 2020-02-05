@@ -46,3 +46,9 @@
     (is (true? (some?' even? [1 5 3 4]))))
   (testing "false condition"
     (is (false? (some?' even? [1 5 7 9])))))
+
+(deftest ascending-test
+  (testing "true condition"
+    (is (true? (ascending? [1 2 3 4 5 6]))))
+  (testing "false condition"
+    (is (false? (ascending? [1 2 3 2 1 0])))))

@@ -96,7 +96,7 @@
   {:level        :easy
    :use          '[loop recur or]
    :dont-use     '[some]
-   :implemented? false}
+   :implemented? true}
   ([pred coll]
    (loop [result false
           coll coll]
@@ -113,8 +113,9 @@
   {:level        :easy
    :use          '[partition every? partial apply <=]
    :dont-use     '[loop recur]
-   :implemented? false}
-  [coll])
+   :implemented? true}
+  [coll]
+  (apply <= coll))
 
 (defn distinct'
   "Implement your own lazy sequence version of distinct which returns
