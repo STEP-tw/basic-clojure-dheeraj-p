@@ -40,3 +40,9 @@
     (is (true? (every?' even? [2 4 6 8]))))
   (testing "false condition"
     (is (false? (every?' even? [2 4 9 6 8])))))
+
+(deftest some-test
+  (testing "true condition"
+    (is (true? (some?' even? [1 5 3 4]))))
+  (testing "false condition"
+    (is (false? (some?' even? [1 5 7 9])))))
