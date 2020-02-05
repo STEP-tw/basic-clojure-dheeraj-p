@@ -52,3 +52,7 @@
     (is (true? (ascending? [1 2 3 4 5 6]))))
   (testing "false condition"
     (is (false? (ascending? [1 2 3 2 1 0])))))
+
+(deftest sum-of-adjacent-digits-test
+  (testing "non-empty collection"
+    (is (= [3 5 7] (sum-of-adjacent-digits [1 2 3 4])))))
