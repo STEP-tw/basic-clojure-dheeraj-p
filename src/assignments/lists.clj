@@ -52,7 +52,10 @@
    :dont-use     '[count]
    :implemented? true}
   ([coll]
-   (reduce + (map (constantly 1) coll))))
+   (loop [result 0 coll coll]
+     (if (empty? coll)
+       result
+       (recur (inc result) (rest coll))))))
 
 (defn reverse'
   "Implement your own version of reverse that reverses a coll.
