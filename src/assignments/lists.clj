@@ -19,7 +19,8 @@
    :dont-use     '[filter]
    :implemented? true}
   [pred coll]
-  (loop [result [] coll coll]
+  (loop [result []
+         coll coll]
     (if (empty? coll)
       result
       (let [current-item (first coll)]
@@ -39,7 +40,8 @@
   ([f coll]
    (reduce' f (first coll) (rest coll)))
   ([f init coll]
-   (loop [acc init coll coll]
+   (loop [acc init
+          coll coll]
      (if (empty? coll)
        acc
        (recur (f acc (first coll)) (rest coll))))))
@@ -52,7 +54,8 @@
    :dont-use     '[count]
    :implemented? true}
   ([coll]
-   (loop [result 0 coll coll]
+   (loop [result 0
+          coll coll]
      (if (empty? coll)
        result
        (recur (inc result) (rest coll))))))
@@ -63,7 +66,7 @@
   {:level        :easy
    :use          '[reduce conj seqable? when]
    :dont-use     '[reverse]
-   :implemented? false}
+   :implemented? true}
   ([coll]
    (when (seqable? coll) (reduce conj '() coll))))
 
@@ -73,8 +76,17 @@
   {:level        :easy
    :use          '[loop recur and]
    :dont-use     '[every?]
-   :implemented? false}
-  ([pred coll]))
+   :implemented? true}
+  ([pred coll]
+   (loop [result true
+          coll coll]
+     (if (empty? coll)
+       result
+       (recur (-> coll
+                  first
+                  pred
+                  (and result))
+              (rest coll))))))
 
 (defn some?'
   "Implement your own version of some that checks if at least one
